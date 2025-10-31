@@ -1,6 +1,7 @@
 from abc import ABC, abstractmethod
 
 import Messages as msgs
+from src.Messages import TextMessage
 
 
 class MessageSender(ABC):
@@ -11,7 +12,7 @@ class MessageSender(ABC):
 class SmsSender(MessageSender):
 
     def send_message(self, message: msgs):
-        if isinstance(message, msgs.TextMessage):
+        if isinstance(message, TextMessage):
             print("SMS: Отправляю текстовое сообщение через СМС...")
             return True
         else:

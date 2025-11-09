@@ -1,4 +1,4 @@
-from src.MessageFactory import MessageFactory, MessageType
+from src.MessageCreator import TextMessageCreator, ImageMessageCreator, VideoMessageCreator, FileMessageCreator
 from src.MessageSender import SmsSender, TelegramSender, VkSender
 
 
@@ -7,10 +7,10 @@ def app():
     tg_sender = TelegramSender()
     vk_sender = VkSender()
 
-    text_msg = MessageFactory.create_message(MessageType.TEXT, "Всем привет", "Danil", "FEFU", tg_sender)
-    image_msg = MessageFactory.create_message(MessageType.IMAGE, "ФОТО", "Danil", "Avito", sms_sender)
-    video_msg = MessageFactory.create_message(MessageType.VIDEO, "ЧВИДКО", "Danil", "ПрогинЧат", vk_sender)
-    file_msg = MessageFactory.create_message(MessageType.FILE, "Типо файл", "Danil", "GoogleDrive", tg_sender)
+    text_msg = TextMessageCreator.create_message("Всем привет", "Danil", "FEFU", tg_sender)
+    image_msg = ImageMessageCreator.create_message("ФОТО", "Danil", "Avito", sms_sender)
+    video_msg = VideoMessageCreator.create_message("ЧВИДКО", "Danil", "ПрогинЧат", vk_sender)
+    file_msg = FileMessageCreator.create_message("Типо файл", "Danil", "GoogleDrive", tg_sender)
 
     text_msg.send()
     image_msg.send()
